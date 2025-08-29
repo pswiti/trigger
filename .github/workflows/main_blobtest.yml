@@ -35,6 +35,7 @@ jobs:
           source venv/bin/activate
 
       - name: Install dependencies
+        working-directory: myfunction
         run: pip install -r requirements.txt
 
       # Optional: Add step to run tests here
@@ -74,3 +75,4 @@ jobs:
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
 
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EEB00F391FD54EADB127B3EFA21536BF }}
+
