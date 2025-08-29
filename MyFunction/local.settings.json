@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "blob-storage-connection-string",
+    "SERVICE_BUS_CONNECTION": "service-bus-connection-string",
+    "SERVICE_BUS_QUEUE": "processqueue"
+  }
+}
