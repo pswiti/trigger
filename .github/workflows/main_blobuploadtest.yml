@@ -24,6 +24,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt --target=".python_packages/lib/site-packages"
 
+      - name: Verify installed packages
+        run: pip freeze
+
       - name: Show folder structure (for debug)
         run: |
           ls -R
@@ -39,3 +42,4 @@ jobs:
           slot-name: 'Production'
           package: release.zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0D13EBAC3ABA490D909D56C221394FFC }}
+
