@@ -35,13 +35,13 @@ jobs:
           source venv/bin/activate
 
       - name: Install dependencies
-        working-directory: myfunction
+        working-directory: MyFunction
         run: pip install -r requirements.txt
 
       # Optional: Add step to run tests here
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip .
+        run: zip -r release.zip MyFunction
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -75,4 +75,5 @@ jobs:
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
 
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EEB00F391FD54EADB127B3EFA21536BF }}
+
 
