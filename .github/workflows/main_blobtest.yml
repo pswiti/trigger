@@ -41,7 +41,7 @@ jobs:
       # Optional: Add step to run tests here
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip MyFunction
+        run: zip -r release.zip MyFunction/
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -75,5 +75,6 @@ jobs:
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
 
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EEB00F391FD54EADB127B3EFA21536BF }}
+
 
 
