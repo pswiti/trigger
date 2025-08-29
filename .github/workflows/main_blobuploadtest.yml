@@ -7,22 +7,28 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Python version
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
+      - name: Install dependencies locally (optional)
+        run: pip install -r requirements.txt
+
+      - name: Zip all files for deployment
+        run: zip -r release.zip .
+
       - name: Deploy to Azure Functions
         uses: Azure/functions-action@v1
         with:
-          app-name: 'blobuploadtest'  # Your function app name
+          app-name: 'blobuploadtest'
           slot-name: 'Production'
-          package: '.'                # Deploy from repo root
+          package: release.zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0D13EBAC3ABA490D909D56C221394FFC }}
